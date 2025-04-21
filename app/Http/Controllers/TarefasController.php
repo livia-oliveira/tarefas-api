@@ -13,4 +13,10 @@ class TarefasController extends Controller
         return Tarefa::with('subtarefas')->get();
     }
 
+    public function store(Request $request){
+        $tarefa = Tarefa::create($request->only(['titulo', 'status']));
+        return response()->json($tarefa, 201);
+
+    }
+
 }
