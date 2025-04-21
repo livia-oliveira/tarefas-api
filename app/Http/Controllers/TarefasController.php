@@ -23,4 +23,10 @@ class TarefasController extends Controller
         return $tarefa->load('subtarefas');
     }
 
+    public function update(Request $request, Tarefa $tarefa){
+        $tarefa->update($request->only(['titulo', 'status']));
+        return response()->json($tarefa);
+    }
+
+
 }
