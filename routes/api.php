@@ -13,3 +13,4 @@ Route::delete('/tarefas/{tarefa}', [TarefasController::class, 'destroy']);
 
 Route::get('/subtarefas', [SubtarefasController::class, 'index']);
 Route::post('/subtarefas', [SubtarefasController::class, 'store']);
+Route::get('/subtarefas/{subtarefa}', [SubtarefasController::class, 'show']);
