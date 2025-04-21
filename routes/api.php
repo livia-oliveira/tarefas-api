@@ -9,3 +9,4 @@ Route::get('/tarefas', [TarefasController::class, 'index']);
 Route::post('/tarefas', [TarefasController::class, 'store']);
 Route::get('/tarefas/{tarefa}', [TarefasController::class, 'show']);
 Route::put('/tarefas/{tarefa}', [TarefasController::class, 'update']);
+Route::delete('/tarefas/{tarefa}', [TarefasController::class, 'destroy']);
