@@ -19,4 +19,8 @@ class TarefasController extends Controller
 
     }
 
+    public function show(Tarefa $tarefa){
+        return $tarefa->load('subtarefas');
+    }
+
 }

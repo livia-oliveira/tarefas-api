@@ -7,3 +7,4 @@ use App\Http\Controllers\SubtarefasController;
 
 Route::get('/tarefas', [TarefasController::class, 'index']);
 Route::post('/tarefas', [TarefasController::class, 'store']);
+Route::get('/tarefas/{tarefa}', [TarefasController::class, 'show']);
