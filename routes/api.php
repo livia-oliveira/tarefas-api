@@ -15,3 +15,4 @@ Route::get('/subtarefas', [SubtarefasController::class, 'index']);
 Route::post('/subtarefas', [SubtarefasController::class, 'store']);
 Route::get('/subtarefas/{subtarefa}', [SubtarefasController::class, 'show']);
 Route::put('/subtarefas/{subtarefa}', [SubtarefasController::class, 'update']);
+Route::delete('/subtarefas/{subtarefa}', [SubtarefasController::class, 'destroy']);
