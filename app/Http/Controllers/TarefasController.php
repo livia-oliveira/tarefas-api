@@ -10,6 +10,8 @@ use App\Traits\ApiResponse;
 
 use App\Http\Requests\UpdateTarefaRequest;
 
+use App\Http\Requests\UpdateStatusRequest;
+
 
 class TarefasController extends Controller
 {
@@ -44,6 +46,33 @@ class TarefasController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+
+    public function alterarStatus(UpdateStatusRequest $request, $id){
+
+        $tarefa = Tarefa::find($id);
+
+        if(!$tarefa){
+            return response()->json([
+                'message' => 'Tarefa não encontrada'
+            ], 404);
+        }
+
+        $novoStatus = $request->input('status');
+        $tarefa->status = $novoStatus;
+        $tarefa->save();
+
+        if($novoStatus === 'concluida'){
+            foreach($tarefa->subtarefas as $subtarefa){
+                $subtarefa->status = 'concluida';
+                $subtarefa->save();
+            }
+        }
+
+        return response()->json([
+            'message' => 'Status atualizado com sucesso!',
+            'data' => $tarefa->load('subtarefas')
+        ], 200);
     }
 
     public function destroy($id){
