@@ -28,24 +28,42 @@ class TarefasController extends Controller
 
     }
 
-    public function show(Tarefa $tarefa){
-        return $this->success($tarefa->load('subtarefas'), 'Tarefa encontrada');
+    public function show(UpdateTarefaRequest $request, $id){
+
     }
 
-    public function update(UpdateTarefaRequest $request, Tarefa $tarefa){
-        try{
-            $dados = $request->only(['titulo', 'status']);
-            $tarefa->update($dados);
+    public function update(UpdateTarefaRequest $request, $id){
+        $tarefa = Tarefa::find($id);
+
+        if(!$tarefa){
             return response()->json([
-                'message' => 'Tarefa atualizada com sucesso!',
-                'data' => $tarefa
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Erro ao atualizar a tarefa',
-                'error' => $e->getMessage()
-            ], 500);
+                'message' => 'Tarefa não encontrada'
+            ], 404);
         }
+
+        if($request->has('titulo')){
+            $tarefa->titulo = $request->input('titulo');
+        }
+
+
+        if($request->has('concluida')){
+            $valor = $request->boolean('concluida');
+            $tarefa->concluida = $valor;
+
+             foreach ($tarefa->subtarefas as $subtarefa){
+                $subtarefa->concluida = $valor;
+                $subtarefa->save();
+            }
+
+        }
+
+        $tarefa->save();
+
+        return response()->json([
+            'message' => 'Tarefa atualizada com sucesso!',
+            'data' => $tarefa->load('subtarefas')
+        ]);
+
     }
 
     public function alterarStatus(UpdateStatusRequest $request, $id){

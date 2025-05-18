@@ -22,21 +22,8 @@ class UpdateTarefaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo' => 'sometimes|required|string|max:255',
-            'status' => 'sometimes|required|in:pendente,em_andamento,concluida',
+            'titulo' => 'nullable|string|max:255',
+            'concluida' => 'nullable|boolean'
         ];
     }
-
-    public function withValidator($validator)
-    {
-
-        $tarefa = $this->route('tarefa');
-
-        $validator->after(function ($validator){
-            if($tarefa && $tarefa->status === 'concluida'){
-                $validator->errors()->add('status', 'Tarefas concluídas não podem ser editadas.');
-            }
-        });
-    }
-
 }
