@@ -23,7 +23,7 @@ class TarefasController extends Controller
     }
 
     public function store(Request $request){
-        $tarefa = Tarefa::create($request->only(['titulo', 'status']));
+        $tarefa = Tarefa::create($request->only(['titulo', 'concluida']));
         return $this->success($tarefa, 'Tarefa criada com sucesso', 201);
 
     }
@@ -58,13 +58,14 @@ class TarefasController extends Controller
             ], 404);
         }
 
-        $novoStatus = $request->input('status');
-        $tarefa->status = $novoStatus;
+        $concluida = (bool) $request->input('concluida');
+
+        $tarefa->concluida = $concluida;
         $tarefa->save();
 
-        if($novoStatus === 'concluida'){
+        if($concluida){
             foreach($tarefa->subtarefas as $subtarefa){
-                $subtarefa->status = 'concluida';
+                $subtarefa->concluida = true;
                 $subtarefa->save();
             }
         }

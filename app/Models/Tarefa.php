@@ -10,7 +10,11 @@ class Tarefa extends Model
 
     use HasFactory;
 
-    protected $fillable = ['titulo', 'status'];
+    protected $fillable = ['titulo', 'concluida'];
+
+    protected $casts = [
+        'concluida' => 'boolean',
+    ];
 
     public function subtarefas()
     {

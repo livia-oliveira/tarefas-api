@@ -22,15 +22,15 @@ class UpdateStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status'=> 'required|in:pendente,em progresso,concluida',
+            'concluida'=> 'required|boolean',
         ];
     }
 
     public function messages(): array
     {
         return[
-            'status.required' => 'O status é obrigatório.',
-            'status.in' => 'O status deve ser pendente, em progresso ou concluida',
+            'concluida.required' => 'O campo concluída é obrigatório.',
+            'concluida.boolean' => 'O campo concluida deve ser true ou false',
         ];
     }
 }

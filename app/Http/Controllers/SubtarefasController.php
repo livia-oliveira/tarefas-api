@@ -18,7 +18,7 @@ class SubtarefasController extends Controller
 
     public function store(Request $request)
     {
-        $subtarefa = Subtarefa::create($request->only(['titulo', 'status', 'tarefa_id']));
+        $subtarefa = Subtarefa::create($request->only(['titulo', 'concluida', 'tarefa_id']));
         return $this->success($subtarefa, 'Subtarefa criada com sucesso', 201);
     }
 

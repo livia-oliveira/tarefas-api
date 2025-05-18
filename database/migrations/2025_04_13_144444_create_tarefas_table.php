@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->enum('status', ['pendente', 'em progresso', 'concluida'])->default('pendente');
+            $table->boolean('concluida')->default(false);
             $table->timestamps();
         });
     }
