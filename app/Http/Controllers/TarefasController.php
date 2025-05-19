@@ -76,16 +76,13 @@ class TarefasController extends Controller
             ], 404);
         }
 
-        $concluida = (bool) $request->input('concluida');
-
-        $tarefa->concluida = $concluida;
+        $valor = $request->boolean('concluida');
+        $tarefa->concluida = $valor;
         $tarefa->save();
 
-        if($concluida){
-            foreach($tarefa->subtarefas as $subtarefa){
-                $subtarefa->concluida = true;
-                $subtarefa->save();
-            }
+        foreach($tarefa->subtarefas as $subtarefa){
+            $subtarefa->concluida = $valor;
+            $subtarefa->save();
         }
 
         return response()->json([
