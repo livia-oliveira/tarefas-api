@@ -62,11 +62,6 @@ class TarefasController extends Controller
             $valor = $request->boolean('concluida');
             $tarefa->concluida = $valor;
 
-             foreach ($tarefa->subtarefas as $subtarefa){
-                $subtarefa->concluida = $valor;
-                $subtarefa->save();
-            }
-
         }
 
         $tarefa->save();
@@ -91,11 +86,6 @@ class TarefasController extends Controller
         $valor = $request->boolean('concluida');
         $tarefa->concluida = $valor;
         $tarefa->save();
-
-        foreach($tarefa->subtarefas as $subtarefa){
-            $subtarefa->concluida = $valor;
-            $subtarefa->save();
-        }
 
         return response()->json([
             'message' => 'Status atualizado com sucesso!',
