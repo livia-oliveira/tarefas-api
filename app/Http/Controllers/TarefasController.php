@@ -12,6 +12,8 @@ use App\Http\Requests\UpdateTarefaRequest;
 
 use App\Http\Requests\UpdateStatusRequest;
 
+use App\Http\Requests\StoreTarefaRequest;
+
 
 class TarefasController extends Controller
 {
@@ -22,9 +24,19 @@ class TarefasController extends Controller
        return $this->success($tarefas);
     }
 
-    public function store(Request $request){
-        $tarefa = Tarefa::create($request->only(['titulo', 'concluida']));
-        return $this->success($tarefa, 'Tarefa criada com sucesso', 201);
+    public function store(StoreTarefaRequest $request){
+
+        $dados = $request->only('titulo');
+
+        $tarefa = Tarefa::create([
+            'titulo' => $dados['titulo'],
+            'concluida' => false
+        ]);
+
+        return response()->json([
+            'message' => 'Tarefa criada com sucesso!',
+            'data' => $tarefa
+        ], 201);
 
     }
 
