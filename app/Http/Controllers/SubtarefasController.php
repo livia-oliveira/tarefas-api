@@ -12,8 +12,12 @@ class SubtarefasController extends Controller
 
     public function index()
     {
-        $subtarefas = Subtarefa::all();
-        return $this->success($subtarefas);
+       $subtarefas = Subtarefa::all();
+
+       return response()->json([
+            'message' => 'Lista de subtarefas recuperada com sucesso',
+            'data' => $subtarefas
+       ], 200);
     }
 
     public function store(Request $request)
