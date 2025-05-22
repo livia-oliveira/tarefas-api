@@ -43,8 +43,19 @@ class TarefasController extends Controller
 
     }
 
-    public function show(UpdateTarefaRequest $request, $id){
+    public function show($id){
+        $tarefa = Tarefa::with('subtarefas')->find($id);
 
+        if(!$tarefa){
+            return response()->json([
+                'message' => 'Tarefa não encontrada'
+            ], 404);
+        }
+
+        return response()->json([
+            'message' => 'Tarefa recuperada com sucesso',
+            'data' => $tarefa
+        ],200);
     }
 
     public function update(UpdateTarefaRequest $request, $id){
