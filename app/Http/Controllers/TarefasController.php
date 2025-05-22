@@ -21,7 +21,10 @@ class TarefasController extends Controller
 
     public function index(){
        $tarefas = Tarefa::with('subtarefas')->get();
-       return $this->success($tarefas);
+       return response()->json([
+        'message' => 'Lista de tarefas recuperada com sucesso',
+        'data' => $tarefas
+       ], 200);
     }
 
     public function store(StoreTarefaRequest $request){
