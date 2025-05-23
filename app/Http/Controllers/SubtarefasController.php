@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subtarefa;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
+use App\Http\Requests\StoreSubtarefaRequest;
 
 class SubtarefasController extends Controller
 {
@@ -20,10 +21,20 @@ class SubtarefasController extends Controller
        ], 200);
     }
 
-    public function store(Request $request)
-    {
-        $subtarefa = Subtarefa::create($request->only(['titulo', 'concluida', 'tarefa_id']));
-        return $this->success($subtarefa, 'Subtarefa criada com sucesso', 201);
+    public function store(StoreSubtarefaRequest $request){
+        $dados = $request->only(['titulo', 'concluida', 'tarefa_id']);
+
+        $subtarefa = Subtarefa::create([
+            'titulo' => $dados['titulo'],
+            'concluida' => false,
+            'tarefa_id' => $dados['tarefa_id']
+        ]);
+
+        return response()->json([
+            'message' => 'Subtarefa criada com sucesso',
+            'dados' => $subtarefa
+        ], 201);
+
     }
 
     public function show(Subtarefa $subtarefa)
