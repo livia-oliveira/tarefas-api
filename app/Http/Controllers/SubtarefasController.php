@@ -37,9 +37,20 @@ class SubtarefasController extends Controller
 
     }
 
-    public function show(Subtarefa $subtarefa)
+    public function show($id)
     {
-        return $this->success($subtarefa, 'Subtarefa encontrada');
+        $subtarefa = Subtarefa::find($id);
+
+        if(!$subtarefa){
+            return response()->json([
+                'message' => 'Tarefa não encontrada'
+            ], 404);
+        }
+
+        return response()->json([
+            'message' => 'tarefa recuperada com sucesso',
+            'data' => $subtarefa
+        ],200);
     }
 
     public function update(Request $request, Subtarefa $subtarefa)
