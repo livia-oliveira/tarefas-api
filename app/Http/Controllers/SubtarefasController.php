@@ -109,9 +109,29 @@ class SubtarefasController extends Controller
         ],200);
     }
 
-    public function destroy(Subtarefa $subtarefa)
+    public function destroy($id)
     {
-        $subtarefa->delete();
-        return $this->success(null, 'Tarefa deletada com sucesso', 204);
+       $subtarefa = Subtarefa::find($id);
+
+       if(!$subtarefa){
+            return response()->json([
+                'message' => 'Subtarefa não encontrada'
+            ],404);
+       }
+
+       try{
+            $subtarefa->delete();
+
+            return response()->json([
+                'message' => 'Subtarefa deletada com sucesso'
+            ],200);
+       }
+
+       catch(\Exception $e){
+            return response()->json([
+                'message' => 'Erro ao excluir tarefa',
+                'error' => $e->getMessage()
+            ],500);
+       }
     }
 }
