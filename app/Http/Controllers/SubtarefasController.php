@@ -12,6 +12,8 @@ use App\Http\Requests\StoreSubtarefaRequest;
 
 use App\Http\Requests\UpdateSubtarefaRequest;
 
+use App\Http\Requests\UpdateStatusRequest;
+
 
 class SubtarefasController extends Controller
 {
@@ -86,6 +88,25 @@ class SubtarefasController extends Controller
             'data' => $subtarefa
         ],200);
 
+    }
+
+    public function alterarStatus(UpdateStatusRequest $request, $id){
+        $subtarefa = Subtarefa::find($id);
+
+        if(!$subtarefa){
+            return response()->json([
+                'message' => 'Subtarefa não encontrada'
+            ], 404);
+        }
+
+        $valor = $request->boolean('concluida');
+        $subtarefa->concluida = $valor;
+        $subtarefa->save();
+
+        return response()->json([
+            'message' => 'Status atualizado com sucesso',
+            'data' => $subtarefa
+        ],200);
     }
 
     public function destroy(Subtarefa $subtarefa)

@@ -17,3 +17,4 @@ Route::post('/subtarefas', [SubtarefasController::class, 'store']);
 Route::get('/subtarefas/{id}', [SubtarefasController::class, 'show']);
 Route::put('/subtarefas/{id}', [SubtarefasController::class, 'update']);
 Route::delete('/subtarefas/{id}', [SubtarefasController::class, 'destroy']);
+Route::patch('/subtarefas/{id}/concluida', [SubtarefasController::class, 'alterarStatus']);
