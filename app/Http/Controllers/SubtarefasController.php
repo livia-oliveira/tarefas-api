@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subtarefa;
+
 use Illuminate\Http\Request;
+
 use App\Traits\ApiResponse;
+
 use App\Http\Requests\StoreSubtarefaRequest;
+
+use App\Http\Requests\UpdateSubtarefaRequest;
+
 
 class SubtarefasController extends Controller
 {
@@ -53,10 +59,33 @@ class SubtarefasController extends Controller
         ],200);
     }
 
-    public function update(Request $request, Subtarefa $subtarefa)
+    public function update(UpdateSubtarefaRequest $request, $id)
     {
-        $subtarefa->update($request->only(['titulo', 'status']));
-        return $this->success($subtarefa, 'Subtarefa atualizada com sucesso');
+        $subtarefa = Subtarefa::find($id);
+
+        if(!$subtarefa){
+            return response()->json([
+                'message' => 'Subtarefa não encontrada'
+            ], 404);
+        }
+
+        if($request->has('titulo')){
+            $subtarefa->titulo = $request->input('titulo');
+        }
+
+        if($request->has('concluida')){
+            $valor = $request->boolean('concluida');
+            $subtarefa->concluida = $valor;
+
+        }
+
+        $subtarefa->save();
+
+        return response()->json([
+            'message' => 'Subtarefa atualizada com sucesso',
+            'data' => $subtarefa
+        ],200);
+
     }
 
     public function destroy(Subtarefa $subtarefa)
