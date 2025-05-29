@@ -134,4 +134,24 @@ class SubtarefasController extends Controller
             ],500);
        }
     }
+
+    public function destroyAll(){
+        $subtarefas = Subtarefa::all();
+
+        if($subtarefas->isEmpty()){
+            return response()->json([
+                'message' => 'Nenhuma subtarefa encontrada para exclusão.',
+            ],404);
+        }
+
+        foreach($subtarefas as $subtarefa){
+            $subtarefa->delete();
+        }
+
+        return response()->json([
+            'message' => 'Todas as subtarefas foram excluidas com sucesso',
+        ],200);
+
+
+    }
 }

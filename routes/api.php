@@ -7,7 +7,7 @@ use App\Http\Controllers\SubtarefasController;
 
 Route::get('/tarefas', [TarefasController::class, 'index']);
 Route::post('/tarefas', [TarefasController::class, 'store']);
-Route::get('/tarefas/{tarefa}', [TarefasController::class, 'show']);
+Route::get('/tarefas/{id}', [TarefasController::class, 'show']);
 Route::put('/tarefas/{id}', [TarefasController::class, 'update']);
 Route::delete('/tarefas/{id}', [TarefasController::class, 'destroy']);
 Route::patch('/tarefas/{id}/concluida', [TarefasController::class, 'alterarStatus']);
@@ -17,4 +17,5 @@ Route::post('/subtarefas', [SubtarefasController::class, 'store']);
 Route::get('/subtarefas/{id}', [SubtarefasController::class, 'show']);
 Route::put('/subtarefas/{id}', [SubtarefasController::class, 'update']);
 Route::delete('/subtarefas/{id}', [SubtarefasController::class, 'destroy']);
+Route::delete('/subtarefas', [SubtarefasController::class, 'destroyAll']);
 Route::patch('/subtarefas/{id}/concluida', [SubtarefasController::class, 'alterarStatus']);
