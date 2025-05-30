@@ -10,6 +10,7 @@ Route::post('/tarefas', [TarefasController::class, 'store']);
 Route::get('/tarefas/{id}', [TarefasController::class, 'show']);
 Route::put('/tarefas/{id}', [TarefasController::class, 'update']);
 Route::delete('/tarefas/{id}', [TarefasController::class, 'destroy']);
+Route::delete('/tarefas', [TarefasController::class, 'destroyAll']);
 Route::patch('/tarefas/{id}/concluida', [TarefasController::class, 'alterarStatus']);
 
 Route::get('/subtarefas', [SubtarefasController::class, 'index']);

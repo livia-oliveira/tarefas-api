@@ -138,4 +138,22 @@ class TarefasController extends Controller
         }
     }
 
+    public function destroyAll(){
+        $tarefas = Tarefa::all();
+
+        if($tarefas->isEmpty()){
+            return response()->json([
+                'message' => 'Nenhuma tarefa encontrada para exclusão.'
+            ], 404);
+        }
+
+        foreach($tarefas as $tarefa){
+            $tarefa->delete();
+        }
+
+        return response()->json([
+            'message' => 'Todas as tarefas foram excluidas com sucesso'
+        ],200);
+    }
+
 }
