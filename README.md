@@ -22,7 +22,7 @@ Ideal para treinar conceitos de API REST, validação, controle manual e version
 - Laravel ^10.x  
 - MySQL  
 - Postman (para testes de API)  
-- Git & GitHub  
+- Git & 
 
 ---
 
