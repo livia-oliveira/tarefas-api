@@ -2,7 +2,9 @@
 
 Uma API RESTful desenvolvida em Laravel para gerenciar tarefas e subtarefas de forma prática e eficiente.
 
+
 ---
+
 
 ## 📖 Descrição
 
@@ -14,7 +16,9 @@ Este projeto é uma aplicação backend desenvolvida com Laravel que permite:
 
 Ideal para treinar conceitos de API REST, validação, controle manual e versionamento de código!
 
+
 ---
+
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -24,7 +28,9 @@ Ideal para treinar conceitos de API REST, validação, controle manual e version
 - Postman (para testes de API)  
 - Git & GitHub
 
+
 ---
+
 
 ## ⚙️ Instalação
 
@@ -51,6 +57,7 @@ php artisan migrate
 php artisan serve
 
 ```
+
 
 ## 📚 Rotas Principais
 
@@ -80,7 +87,9 @@ php artisan serve
 | DELETE | /api/subtarefas/{id}                | Deletar uma subtarefa           |
 | DELETE | /api/subtarefas                     | Deletar todas as subtarefas |
 
+
 ---
+
 
 ## 💡 Aprendizados
 
@@ -92,13 +101,17 @@ php artisan serve
 
 - Criação de APIs RESTful
 
+
 ---
+
 
 ## 🖊️ Autora
 Lívia Oliveira
 [GitHub](https://github.com/livia-oliveira)
 
+
 ---
+
 
 ## 📄 Licença
 Este projeto está sob a licença MIT.
