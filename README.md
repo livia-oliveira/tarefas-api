@@ -66,7 +66,7 @@ php artisan serve
 | DELETE | /api/tarefas/{id}                | Deletar uma tarefa           |
 | DELETE | /api/tarefas                     | Deletar todas as tarefas |
 
----
+
 
 📝 Subtarefas
 
