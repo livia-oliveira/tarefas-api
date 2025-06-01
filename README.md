@@ -22,7 +22,7 @@ Ideal para treinar conceitos de API REST, validação, controle manual e version
 - Laravel ^10.x  
 - MySQL  
 - Postman (para testes de API)  
-- Git & 
+- Git & GitHub
 
 ---
 
@@ -49,6 +49,53 @@ php artisan migrate
 
 # Suba o servidor
 php artisan serve
+
+```
+
+## 📚 Rotas Principais
+
+📝 Tarefas
+
+| Método | Rota                             | Descrição                    |
+| ------ | -------------------------------- | ---------------------------- |
+| GET    | /api/tarefas                     | Listar todas as tarefas      |
+| POST   | /api/tarefas                     | Criar uma nova tarefa        |
+| GET    | /api/tarefas/{id}                | Exibir uma tarefa específica |
+| PUT    | /api/tarefas/{id}                | Atualizar uma tarefa         |
+| PATCH  | /api/tarefas/{id}/alterar-status | Alterar status de uma tarefa |
+| DELETE | /api/tarefas/{id}                | Deletar uma tarefa           |
+| DELETE | /api/tarefas                     | Deletar todas as tarefas |
+
+📝 Subtarefas
+
+| Método | Rota                                | Descrição                       |
+| ------ | ----------------------------------- | ------------------------------- |
+| GET    | /api/subtarefas                     | Listar todas as subtarefas      |
+| POST   | /api/subtarefas                     | Criar uma nova subtarefa        |
+| GET    | /api/subtarefas/{id}                | Exibir uma subtarefa específica |
+| PUT    | /api/subtarefas/{id}                | Atualizar uma subtarefa         |
+| PATCH  | /api/subtarefas/{id}/alterar-status | Alterar status de uma subtarefa |
+| DELETE | /api/subtarefas/{id}                | Deletar uma subtarefa           |
+| DELETE | /api/subtarefas                     | Deletar **todas** as subtarefas |
+
+## 💡 Aprendizados
+
+- Uso do Laravel como framework backend
+
+- Boas práticas de versionamento com Git
+
+- Controle manual de atualização de dados
+
+- Criação de APIs RESTful
+
+## 🖊️ Autora
+Lívia Oliveira
+GitHub
+
+## 📄 Licença
+Este projeto está sob a licença MIT.
+
+
 
 
 
