@@ -66,6 +66,8 @@ php artisan serve
 | DELETE | /api/tarefas/{id}                | Deletar uma tarefa           |
 | DELETE | /api/tarefas                     | Deletar todas as tarefas |
 
+---
+
 📝 Subtarefas
 
 | Método | Rota                                | Descrição                       |
@@ -76,7 +78,9 @@ php artisan serve
 | PUT    | /api/subtarefas/{id}                | Atualizar uma subtarefa         |
 | PATCH  | /api/subtarefas/{id}/alterar-status | Alterar status de uma subtarefa |
 | DELETE | /api/subtarefas/{id}                | Deletar uma subtarefa           |
-| DELETE | /api/subtarefas                     | Deletar **todas** as subtarefas |
+| DELETE | /api/subtarefas                     | Deletar todas as subtarefas |
+
+---
 
 ## 💡 Aprendizados
 
@@ -88,9 +92,13 @@ php artisan serve
 
 - Criação de APIs RESTful
 
+---
+
 ## 🖊️ Autora
 Lívia Oliveira
-GitHub
+[GitHub](https://github.com/livia-oliveira)
+
+---
 
 ## 📄 Licença
 Este projeto está sob a licença MIT.
